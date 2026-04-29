@@ -4,20 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <%- include('../partials/organisms/header') %>
+    <%- include('../partials/molecules/categoryMenu') %>
 
     <main>
-        <h2>Bienvenido a Mi Ecommerce</h2>
-        <section class="products">
-            <%- include('../partials/molecules/productCard') %>
-            <%- include('../partials/molecules/productCard') %>
-            <%- include('../partials/molecules/productCard') %>
+        <section class="hero-section" aria-label="Productos destacados">
+            <article class="product-hero hero-1">
+                <div class="hero-content">
+                    <h2>Nuevos Ingresos</h2>
+                    <p>Descubrí lo último en tecnología</p>
+                    <a href="/product" class="btn">Ver Más</a>
+                </div>
+            </article>
+            <article class="product-hero hero-2">
+                <div class="hero-content">
+                    <h2>Ofertas Especiales</h2>
+                    <p>Hasta 50% de descuento en Indumentaria</p>
+                    <a href="/product" class="btn">Comprar Ahora</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="product-list-section" aria-labelledby="products-heading">
+            <h2 id="products-heading">Productos Destacados</h2>
+            <div class="products-grid">
+                <%- include('../partials/molecules/productCard', { name: 'Auriculares Inalámbricos', price: '1500 pts', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80' }) %>
+                <%- include('../partials/molecules/productCard', { name: 'Zapatillas Deportivas', price: '2500 pts', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80' }) %>
+                <%- include('../partials/molecules/productCard', { name: 'Smartwatch Serie 5', price: '3000 pts', image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&q=80' }) %>
+                <%- include('../partials/molecules/productCard', { name: 'Mochila Urbana', price: '800 pts', image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80' }) %>
+                <%- include('../partials/molecules/productCard', { name: 'Cámara Reflex', price: '8500 pts', image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&q=80' }) %>
+                <%- include('../partials/molecules/productCard', { name: 'Consola de Juegos', price: '12000 pts', image: 'https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=500&q=80' }) %>
+                <%- include('../partials/molecules/productCard', { name: 'Teclado Mecánico', price: '1800 pts', image: 'https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&q=80' }) %>
+                <%- include('../partials/molecules/productCard', { name: 'Silla Gamer', price: '6500 pts', image: 'https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=500&q=80' }) %>
+            </div>
         </section>
     </main>
 
+    <%- include('../partials/molecules/categoryMenu') %>
     <%- include('../partials/organisms/footer') %>
+
+    <script src="/js/main.js"></script>
 </body>
 </html>

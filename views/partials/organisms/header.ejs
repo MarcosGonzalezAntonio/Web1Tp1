@@ -1,11 +1,33 @@
-<header>
-    <h1>Mi Ecommerce</h1>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
-            <li><a href="/cart">Cart</a></li>
-        </ul>
-    </nav>
+<header class="main-header">
+    <div class="header-container">
+        <div class="header-left">
+            <button class="mobile-menu-btn" aria-label="Abrir menú" id="mobileMenuBtn">
+                <i class="bi bi-list"></i>
+            </button>
+            <a href="/" class="logo-link" aria-label="Ir a inicio">
+                <i class="bi bi-shop"></i> 
+                <span class="store-name">Vimet Store</span>
+            </a>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar productos..." aria-label="Buscar productos">
+            <button type="button" aria-label="Botón de búsqueda"><i class="bi bi-search"></i></button>
+        </div>
+
+        <nav class="header-nav" id="headerNav">
+            <button class="close-menu-btn" aria-label="Cerrar menú" id="closeMenuBtn">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <ul style="align-items: center;">
+                <li><a href="/login" class="btn btn-outline" style="border: none; padding: 0.5rem;">Ingresar</a></li>
+                <li><a href="/register" class="btn btn-primary" style="padding: 0.5rem 1rem;">Registrarse</a></li>
+                <li class="cart-li" style="margin-left: 0.5rem;"><a href="/cart" aria-label="Carrito de compras" class="cart-icon"><i class="bi bi-cart"></i></a></li>
+            </ul>
+        </nav>
+
+        <a href="/cart" aria-label="Carrito de compras" class="mobile-cart-icon">
+            <i class="bi bi-cart"></i>
+        </a>
+    </div>
 </header>
