@@ -1,0 +1,522 @@
+hazme esto con el material que te voy a enviar ahora
+<aside>
+🎯 Objetivos
+Agregar el código de programación JS necesario para que nuestro prototipo funcional evolucione en una aplicación interactiva con funcionalidades, datos y comportamientos reales.
+</aside>
+<aside>
+🔧 Para completar este Sprint, sólo necesitas contar con una computadora y conexión a internet.
+</aside>
+<aside>
+🚨
+Pautas
+Los criterios que se tendrán en cuenta al analizar los resultados del Sprint son los siguientes:
+💪 Debe existir el progreso individual, es decir, esperamos que cada persona del equipo de desarrollo produzca una parte del proyecto.
+🤝 Debe existir trabajo colaborativo. Esperamos que apliquen las metodologías aprendidas para fortalecer el avance conjunto y la división de trabajo.
+✅ Revisaremos que hagas uso de buenas prácticas de programación y que el código Javascript sea correcto, completo, ordenado y elegante.
+🎖️El producto obtenido al final del Sprint debe cumplir con los requisitos funcionales que se piden.
+</aside>
+<aside>
+🗒️ Nota importante
+Podes trabajar de forma individual o grupal. Pero en cualquier caso la entrega será personal. Si hay alguna tarea o concepto mencionado que no conoces o no entiendes, es necesario que lo informes cuanto antes para poder obtener asistencia.
+</aside>
+<aside>
+📦 Entregable
+Se espera la entrega de un repositorio Git con el código producido. Se valorará el trabajo en ramas.
+</aside>
+¡Vamos a agregar control y lógica a nuestro ecommerce!
+En el primer Sprint construimos un prototipo con código basándonos en las ideas que recibimos del Equipo de Diseño sobre la nueva versión de MiEcommerce. Ahora empezaremos a conectar las pantallas implementando la lógica de negocio y la lógica de la aplicación para que nuestro prototipo evolucione a una app de verdad.
+Nos enfocaremos en lograr que nuestro prototipo funcione de verdad. Usaremos Javascript y los conocimientos que tenemos de Node y Express para llenar nuestra maqueta de datos y permitir que nuestra app responda a patrones y decisiones. Obtendremos como producto final, un proyecto que sigue el patrón MVC e implementa una API Rest para poder consumir los datos de forma segura y ordenada.
+
+Requerimientos del Sprint
+El resultado del primer Sprint gustó mucho a las personas interesadas en el proyecto. Ahora quieren ver un acercamiento más real y funcional que permita hacer nuevas pruebas sobre la fortaleza de la lógica de negocio y empezar a esbozar la lógica de gestión de datos de la aplicación. ¡Esta vez nuestro producto debe hacer algo!
+Con esta idea en mente, dividiremos nuestro trabajo en pequeños pasos dentro de este Sprint para que nuestra app sea capaz de:
+1️⃣  Mostrar datos reales de los productos en los espacios maquetados para los listados de productos y la vista de un producto en particular.
+2️⃣  Administrar el carrito de compras.
+3️⃣  Administrar sesiones y persistencia de datos.
+4️⃣  Aplicar el modelo MVC.
+Para dar cumplimiento a estas tareas y lograr el objetivo del sprint sin perder de vista nuestro enfoque en las personas usuarias, vamos a trabajar con User Stories que nos ayudarán a cumplir estos requisitos funcionales.
+<aside>
+⚠️
+Es importante que, cada persona en conjunto con su equipo, estime el tiempo de trabajo requerido en cada User Story para poder evaluar, durante el ciclo de trabajo y al finalizar el Sprint, cómo fue la estimación.
+</aside>
+
+User Story #1 – Reordenar Proyecto
+<aside>
+🤝
+Es recomendable trabajar esta story de forma colaborativa, usando las rutas como subtareas o pasos necesarios para completarla.
+</aside>
+Código: #main-s2-us1
+Nombre: Reordenar estructura del proyecto y las rutas de los recursos
+
+Detalle
+Necesitamos reorganizar nuestra app usando la estructura propuesta por el modelo MVC, porque nuestra idea original de estructura no nos permite separar los conceptos de forma adecuada. Con las nuevas formas propuestas estaremos respetando las buenas prácticas.
+<aside>
+⚠️
+No es obligatorio respetar las estructuras propuestas si surgen ideas superadoras.
+</aside>
+
+Estructura propuesta 1
+📁 public
+📁 src
+📁 models
+📄productModel.js
+📁 controllers
+📄productController.js
+📁 views
+📄products.ejs
+📁 routes
+📄productRoute.js
+⏯️ app.js
+⚙️ package.json
+📁 assets
+Estructura propuesta 2
+📁 public
+📁 models
+📄productModel.js
+📁 controllers
+📄productController.js
+📁 views
+📄products.ejs
+📁 routes
+📄productRoute.js
+⏯️ server.js
+⚙️ package.json
+📁 assets
+User Story #2 – 404
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us2
+Nombre: Página 404
+
+Detalle
+Como líder del Equipo de Desarrollo, quiero que nuestra app muestre una página de error para todas las rutas que no están mapeadas con un recurso, el navegador deberá mostrar una Página de Error 404 (y su correspondiente estado HTTP) cuando se ingrese una URL incorrecta.
+<aside>
+✨
+Son bienvenidas las ideas acerca de cómo mejorar la experiencia de las personas usuarias que llegan a una página no existente y lograr que continúen navegando nuestra app.
+</aside>
+
+User Story #3 – Validar Registro
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us3
+Nombre: Validar Registro
+
+Detalle
+Como líder del Equipo de Desarrollo, quiero que la pantalla de registro (accesible desde /register) envíe la petición de registro sólo cuando los datos estén correctos (validar datos).
+
+Escenarios
+Dado que la persona usuaria ha llegado a la página de registro y comete errores al completar el formulario, debe evitarse el envío de la petición haciendo validaciones de los datos.
+Dado que la persona usuaria ha llegado a la página de registro y no comete errores al completar el formulario, debe enviarse la petición.
+Validación
+Los campos Nombre, Apellido, Email y Contraseña no están en blanco.
+El email es válido.
+Los campos no tienen espacios en blanco al principio o al final.
+La contraseñatiene al menos 8 caracteres;
+debe incluir al menos una letra;
+debe incluir al menos un número;
+debe incluir al menos un carácter especial;
+
+! @ # $ % ^ & * ( ) , . ? " : { } | < >
+no debe contener cadenas prohibidas;
+
+“password”
+“1234”
+“qwerty”
+el nombre del sitio
+el nombre del usuario
+no es igual al email;
+User Story #4 – Carrito en Sesión
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us4
+Nombre: Carrito en sesión
+
+Detalle
+Como líder del Equipo de Desarrollo, quiero que la app disponga de un carrito de compras persistente durante la navegación, utilizando express-session, para que las personas usuarias puedan agregar productos, modificar cantidades y visualizar su selección sin perder el estado al cambiar de página.
+El carrito debe almacenarse en la sesión del navegador dentro de req.session.cart, y debe contener únicamente información mínima necesaria para operar: el productId y la quantity.
+Los datos completos del producto deben obtenerse desde la fuente de datos (archivo JSON o módulo JS) al momento de renderizar las vistas.
+<aside>
+💡
+Más información sobre express-session:
+GitHub - expressjs/session: Simple session middleware for Express
+</aside>
+
+Escenarios
+Escenario 1 — Agregar un producto al carrito
+Dado que la persona usuaria está observando un producto en /products/:id,
+cuando hace clic en el botón “Agregar al carrito”, entonces la app debe agregar ese producto al carrito en la sesión. Si el producto ya existe en el carrito, debe incrementarse su cantidad en 1.
+Escenario 2 — Ver el carrito
+Dado que la persona usuaria accede a /cart, cuando la app renderiza la vista,
+entonces debe mostrar el listado de productos agregados al carrito, combinando:
+los productId y quantity almacenados en la sesión
+con los datos reales del producto provenientes del archivo JSON
+Cada ítem debe mostrar: imagen, nombre, precio unitario, cantidad y subtotal.
+Escenario 3 — Aumentar o disminuir cantidades
+Dado que la persona usuaria está en /cart, cuando hace clic en el botón ➕ de un producto, entonces la cantidad debe incrementarse en 1.
+Cuando hace clic en el botón ➖, entonces la cantidad debe disminuirse en 1. Si la cantidad llega a 0, el producto debe eliminarse del carrito.
+Escenario 4 — Vaciar el carrito
+Dado que la persona usuaria está en /cart, cuando hace clic en el botón “Vaciar carrito”, entonces el carrito debe reiniciarse a un array vacío en la sesión.
+Escenario 5 — Total general
+Dado que la persona usuaria está en /cart, cuando la app renderiza la vista, entonces debe calcularse el total sumando los subtotales de cada producto.
+Escenario 6 — Carrito vacío
+Dado que la persona usuaria accede a /cart y no tiene productos agregados, entonces debe mostrarse un mensaje amigable indicando que el carrito está vacío, y un botón para volver al inicio.
+Validación
+No debe usarse express-session para login, usuarios o seguridad.
+Se utiliza express-session correctamente y el carrito se almacena en req.session.cart.
+El carrito persiste durante la navegación, pero se pierde al cerrar el navegador.
+El carrito no almacena datos completos del producto, solo { productId, quantity }.
+La vista /cart muestra información real del producto combinada con la sesión.
+Los botones ➕ y ➖ funcionan correctamente.
+El botón “Vaciar carrito” reinicia el estado.
+El total general se calcula correctamente.
+El estado vacío se maneja con un mensaje claro y usable.
+No se utiliza API ni base de datos en esta etapa.
+No se guarda información sensible en la sesión.
+User Story #5 – Checkout Temporal
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us5
+Nombre: Vista temporal de Checkout
+
+Detalle
+Como persona usuaria, quiero poder acceder a la página /checkout, para entender que esta funcionalidad estará disponible en un sprint posterior.
+
+Escenarios
+La persona accede a /checkout.
+La app muestra una vista simple con:mensaje “Checkout disponible en el próximo sprint”
+botón “Volver al carrito”
+botón “Volver al inicio”
+Validación
+La ruta /checkout existe.
+La vista se renderiza correctamente.
+No hay lógica de negocio.
+No hay errores en consola.
+No se devuelve un código HTTP incorrecto.
+User Story #6 – Productos Sugeridos en Inicio
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us6
+Nombre: Mostrar productos sugeridos en Inicio
+
+Detalle
+Como persona usuaria, quiero ver una sección “Te puede interesar” en la página de inicio, que muestre hasta 5 productos sugeridos basados en los datos reales de la app, para descubrir productos relevantes sin necesidad de navegar por categorías.
+
+Requerimientos
+La Home debe leer los productos desde products.json (o módulo JS).
+Debe seleccionar hasta 5 productos para mostrar.
+La selección puede ser:los primeros 5 del JSON,
+o 5 aleatorios (BONUS)
+Debe reutilizar el componente/card de producto existente.
+Validación
+Se muestran hasta 5 productos.
+Cada producto muestra:imagen
+nombre
+precio
+link a /products/:id
+✨BONUS: Si un producto no tiene imagen, se muestra una imagen de fallback.
+No se usa API.
+No se usa fetch.
+No se usa base de datos.
+User Story #7 – Productos más pedidos en Inicio
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us7
+Nombre: Mostrar productos más pedidos
+
+Detalle
+Como persona usuaria, quiero ver una sección “Los más pedidos” en la página de inicio, que muestre hasta 10 productos destacados basados en los datos reales de la app, para descubrir productos relevantes sin necesidad de navegar por categorías.
+
+Requerimientos
+La Home debe leer los productos desde products.json.
+Debe seleccionar hasta 10 productos para mostrar.
+La selección puede ser:marcados con un flag,
+y aleatorios.
+Validación
+Se muestran hasta 10 productos.
+Cada producto muestra:imagen
+nombre
+precio
+link a /products/:id
+Se muestra una imagen de fallback si no hay foto.
+No se usa API.
+No se usa fetch.
+No se usa base de datos.
+User Story #8 – Productos más pedidos en Detalle
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us8
+Nombre: Mostrar productos relacionados en la página de producto.
+
+Detalle
+Como persona usuaria, quiero que la página de detalle de un producto (/products/:id) muestre una sección de productos relacionados, para descubrir alternativas similares sin necesidad de volver a la página principal o navegar por categorías.
+Los productos relacionados deben obtenerse a partir de los datos existentes en la aplicación (por ejemplo, compartiendo la misma categoría, tipo o etiqueta), sin utilizar API ni base de datos externa.
+
+Escenarios
+Escenario 1 - Producto con categoría definida
+Dado que la persona usuaria accede a /products/:id, y el producto tiene una categoría definida, cuando la app renderiza la vista, entonces debe mostrar una sección “Productos relacionados” con hasta 4 productos que pertenezcan a la misma categoría.
+Escenario 2 - Producto sin suficientes relacionados
+Dado que el producto pertenece a una categoría con menos de 4 productos, cuando la app renderiza la vista, entonces debe mostrar únicamente los productos disponibles (1, 2 o 3), sin repetir ni inventar datos.
+Escenario 3 - Producto sin categoría o sin coincidentes
+Dado que el producto no tiene categoría o no existen productos relacionados, cuando la app renderiza la vista, entonces debe mostrarse un mensaje amigable indicando que no hay productos relacionados disponibles.
+Validación
+La sección “Productos relacionados” aparece debajo de la información principal del producto.
+Se muestran hasta 4 productos relacionados.
+Cada producto relacionado muestra:imagen
+nombre
+precio
+link a su página /products/:id
+Se reutiliza el template/card de producto existente.
+Si hay más de 4 productos relacionados, se seleccionan 4 al azar.
+No se utiliza API ni fetch.
+No se utiliza base de datos.
+La lógica se implementa en el controlador del producto, usando los datos del JSON.
+User Story #9 – Detalle de Producto
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us9
+Nombre: Detalle del producto
+
+Detalle
+Como persona usuaria, quiero que la página de detalle de un producto (/products/:id) muestre toda la información del producto seleccionado, para poder evaluar sus características antes de decidir si lo agrego al carrito.
+Los datos deben obtenerse desde la fuente de datos local (products.json o módulo JS), sin utilizar API ni base de datos.
+
+Escenarios
+Escenario 1 - Producto existente
+Dado que la persona usuaria accede a /products/:id, y el producto existe en la fuente de datos, cuando la app renderiza la vista, entonces debe mostrar:
+nombre
+precio
+descripción
+categoría
+primera imagen disponible
+botón “Agregar al carrito”
+Escenario 2 - Producto inexistente
+Dado que la persona usuaria accede a un ID que no existe, cuando la app procesa la solicitud, entonces debe renderizar una página 404 con un mensaje claro.
+Validación
+El ID de la URL corresponde al producto mostrado.
+Se muestra la primera imagen del producto.
+Se muestran todos los datos según el template original.
+BONUS: Si el producto no tiene imagen, se muestra una imagen de fallback.
+BONUS: Si el producto no existe, se muestra la página 404.
+No se utiliza API REST.
+No se utiliza fetch.
+No se utiliza base de datos.
+User Story #10 – Categorías
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us10
+Nombre: Listado de productos por categoría
+
+Detalle
+Como persona usuaria, quiero poder ver todos los productos pertenecientes a una categoría específica accediendo a /categories/:category, para navegar más fácilmente entre productos similares.
+<aside>
+💡
+La página de categoría no tiene diseño, pero podemos reutilizar algunas partes de otras vistas.
+</aside>
+
+Requerimientos
+La persona accede a /categories/:category.
+La app filtra los productos del JSON por categoría.
+Se muestran todos los productos coincidentes.
+Si no hay productos, se muestra un mensaje amigable.
+Se muestra el nombre de la categoría.
+Validación
+Se muestran los productos correctos.
+Se reutiliza el template de card de producto.
+No se usa API ni fetch.
+No se usa base de datos.
+User Story #11 – Sin Stock
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us11
+Nombre: Indicador de producto sin stock
+
+Detalle
+Como persona usuaria, quiero que los productos sin stock muestren un indicador visual (“Sin stock”), para evitar intentar agregarlos al carrito.
+
+Requerimientos
+Si stock === 0, la card muestra un badge “Sin stock”.
+El botón “Agregar al carrito” aparece deshabilitado.
+Validación
+No se permite agregar productos sin stock.
+No se usa API ni DB.
+No se altera la estructura del JSON.
+User Story #12 – Total de Carrito en Header
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us12
+Nombre: Total del carrito en el header
+
+Detalle
+Como persona usuaria, quiero ver en el header el total de productos del carrito, para entender rápidamente cuántos ítems llevo acumulados.
+
+Requerimientos
+El header muestra un ícono de carrito con la cantidad total.
+Si el carrito está vacío, muestra 0.
+Validación
+Se lee req.session.cart.
+No se usa API.
+No se usa DB.
+User Story #13 – 500
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us13
+Nombre: Página 500
+
+Detalle
+Como persona usuaria, quiero que la app muestre una página de error 500 cuando ocurre un error interno, para entender que hubo un problema y no que la app se rompió silenciosamente.
+
+Requerimientos
+Se dispara el middleware de error.
+Se renderiza una vista 500.ejs.
+Validación
+La vista se muestra correctamente.
+No se filtra información sensible.
+No se usa API.
+User Story #14 – Layout base
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us14
+Nombre: Layout base
+
+Detalle
+Como persona usuaria, quiero que todas las páginas compartan un layout consistente (header, footer, estilos), para tener una experiencia uniforme.
+
+
+Requerimientos
+Se crea views/layouts/main.ejs.
+Todas las vistas extienden este layout (excepto login y registro).
+Validación
+El layout funciona en todas las rutas (excepto login y registro).
+No se usa API.
+User Story #15 – Servicio de Productos
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us15
+Nombre: Servicio de productos
+
+Detalle
+Como líder del Equipo de Desarrollo, quiero que toda la lógica de lectura y filtrado de productos esté en un módulo de servicios, para mantener los controladores limpios y facilitar la migración a base de datos en el Sprint 3.
+
+Requerimientos
+Se crea services/productsService.js.
+Los controladores lo utilizan.
+Validación
+No hay lógica de negocio en los controladores.
+No se usa API.
+No se usa DB.
+User Story #16 – Servicio de Carrito
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us16
+Nombre: Servicio del carrito
+
+Detalle
+Como líder del Equipo de Desarrollo, quiero que toda la lógica del carrito esté encapsulada en un servicio, para mantener los controladores simples y preparar la migración a DB.
+
+Escenarios
+Agregar producto
+Quitar producto
+Modificar cantidad
+Vaciar carrito
+Calcular total
+Validación
+req.session.cart se manipula solo desde el servicio.
+No se usa API.
+No se usa DB.
+User Story #17 – Normalización de IDs
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us17
+Nombre: Normalización de IDs
+
+Detalle
+Como líder del Equipo de Desarrollo, quiero que todos los IDs de productos se normalicen y validen antes de usarse, para evitar errores silenciosos y mejorar la robustez del sistema.
+
+Escenarios
+ID no numérico → 400
+ID numérico pero inexistente → 404
+Validación
+Se implementa una función normalizeId().
+No se usa API.
+User Story #18 – Ordenar Productos
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us18
+Nombre: Ordenar productos por precio
+
+Detalle
+Como persona usuaria, quiero poder ordenar los productos por precio ascendente o descendente, para encontrar más fácilmente lo que busco.
+
+Escenarios
+/products?sort=asc
+/products?sort=desc
+Validación
+Se ordena correctamente.
+No se usa API.
+No se usa DB.
+User Story #19 – Buscar Productos
+<aside>
+👤
+Es recomendable trabajar esta story de forma individual. Puede ser asignada a una persona del equipo.
+</aside>
+Código: #main-s2-us19
+Nombre: Buscador de productos
+
+Detalle
+Como persona usuaria, quiero buscar productos por nombre desde un formulario en el header, para encontrar rápidamente lo que necesito.
+
+Escenarios
+/search?query=camisa
+Se filtran productos por coincidencia parcial.
+Si no hay resultados, se muestra un mensaje.
+Validación
+No se usa API.
+No se usa DB.
+Próximos pasos…
+¡Terminamos el Sprint 2, y eso no es menor!
+Este sprint no fue “más de lo mismo”: fue el salto donde pasamos de una maqueta estática a una aplicación que piensa, recuerda, muestra datos reales y responde a la interacción de la persona usuaria.
+Acá aprendimos a trabajar con rutas dinámicas, a leer datos reales desde archivos, a construir vistas que se adaptan al contenido, a manejar estado en el servidor con sesiones, a validar entradas, a mostrar errores, a componer vistas reutilizables y a estructurar el backend con servicios para que el código sea mantenible.
+Todo eso, junto, es lo que diferencia a alguien que “programa páginas” de alguien que construye aplicaciones. Y ahora viene lo interesante.
+El Sprint 3 no es un sprint más: es el sprint donde la aplicación deja de ser un simple sitio SSR y empieza a convertirse en un sistema real, con:
+
+autenticación real,
+hashing de contraseñas,
+validaciones de backend,
+persistencia en base de datos
+En el Sprint 3 van a ver cómo todo lo que hicieron en este sprint cobra sentido: las rutas, los controladores, los servicios, la estructura del proyecto; todo eso se transforma en la base sobre la cual se monta una API profesional.
+Si el Sprint 1 fue “armar la maqueta” y el Sprint 2 fue “darle vida”, el Sprint 3 es convertirla en un producto real y preparar todo para empezar con React.
+Lo que viene es más desafiante, pero también es lo que más se parece al trabajo real en la industria.
